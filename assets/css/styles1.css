@@ -1,0 +1,1000 @@
+/* ==============
+   GLOBAL / BASE
+   ============== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #111;
+  background-color: #faf8f5; /* warm off-white */
+}
+
+.page-width {
+  max-width: 1120px;        /* wide for header/footer/structure */
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Narrow reading width for content */
+main .page-width,
+.journal-article-inner,
+.journal-list,
+.book-detail-layout,
+.book-detail-columns,
+.journal-feature-inner,
+.page-mark-inner {
+  max-width: 700px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==============
+   HEADER / NAV
+   ============== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #faf8f5;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+  position: relative; /* so mobile dropdown can anchor to this */
+}
+
+.site-title a {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-decoration: none;
+  color: #111;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: #111;
+}
+
+.site-nav a.is-active {
+  color: #111;
+  font-weight: 600;
+}
+
+.nav-shop-link {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #111;
+}
+
+/* Mobile nav toggle (hamburger) */
+
+.nav-toggle {
+  display: none; /* hidden checkbox */
+}
+
+.nav-toggle-label {
+  display: none; /* will display only on small screens */
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 12px;
+}
+
+/* Hamburger icon */
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #111;
+  border-radius: 999px;
+  position: relative;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-label span::before {
+  top: -6px;
+}
+
+.nav-toggle-label span::after {
+  top: 6px;
+}
+
+/* When menu is open, transform into an X */
+.nav-toggle:checked + .nav-toggle-label span {
+  transform: rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-toggle-label span::before {
+  transform: rotate(-90deg);
+  top: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label span::after {
+  opacity: 0;
+}
+
+/* ==============
+   TYPOGRAPHY HELPERS
+   ============== */
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* Serif for big titles, sans for the rest */
+.hero-heading,
+.page-book-detail h1,
+.page-journal .hero-heading,
+.page-journal-post .hero-heading {
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+.hero-heading {
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtext,
+.section-subtext {
+  max-width: 40rem;
+  font-size: 16px;
+  color: #444;
+}
+
+h2 {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+
+/* ==============
+   BUTTONS / LINK BUTTONS
+   ============== */
+
+.button-solid,
+.button-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid #111;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.button-solid {
+  background-color: #111;
+  color: #faf8f5;
+}
+
+.button-solid:hover,
+.button-solid:focus {
+  background-color: #333;
+}
+
+.button-ghost {
+  background-color: transparent;
+  color: #111;
+}
+
+.button-ghost:hover,
+.button-ghost:focus {
+  background-color: #111;
+  color: #faf8f5;
+}
+
+/* Make ghost buttons readable on dark hero backgrounds */
+.full-bleed-hero .button-ghost {
+  color: #fff;
+  border-color: #999;
+}
+
+.full-bleed-hero .button-ghost:hover,
+.full-bleed-hero .button-ghost:focus {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ==============
+   HOME: HERO
+   ============== */
+
+.home-hero {
+  padding: 80px 0 56px;
+}
+
+/* Full-bleed hero for home */
+
+.full-bleed-hero {
+  position: relative;
+  min-height: 80vh;
+  color: #fdf8f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* THIS is the crucial line */
+  background-image: url("../images/hero/mark-studio-hero.png");
+
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 56px;
+}
+
+.full-bleed-hero {
+  /* ...lines above... */
+  background-color: red;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(7, 6, 4, 0.42),
+      rgba(7, 6, 4, 0.68)
+  );
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 680px;
+  padding: 80px 16px 64px;
+}
+
+.hero-topline {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  margin-bottom: 18px;
+  color: #f0e1cf;
+}
+
+.home .hero-heading {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(32px, 4.2vw, 44px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.home .hero-subtext {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #f6e7d2;
+  margin-bottom: 26px;
+}
+
+.hero-actions {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.hero-scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #dacfc0;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 24px;
+  background: #dacfc0;
+}
+
+/* ==============
+   HOME: FEATURED SECTIONS
+   ============== */
+
+.featured {
+  padding: 40px 0 32px;
+  border-top: 1px solid #eee;
+}
+
+.featured-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.featured-inner--reverse {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+}
+
+.featured-media img {
+  border-radius: 4px;
+}
+
+.featured-content {
+  max-width: 32rem;
+}
+
+.featured-text {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 18px;
+}
+
+.featured-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==============
+   HOME: JOURNAL PREVIEW
+   ============== */
+
+.home-journal {
+  padding: 56px 0 40px;
+  border-top: 1px solid #eee;
+}
+
+.home-section-header {
+  max-width: 40rem;
+  margin-bottom: 32px;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.journal-card {
+  padding: 18px 16px 20px;
+  border-radius: 6px;
+  background-color: #f3f0ec;
+}
+
+.journal-card h3 a {
+  color: #111;
+  text-decoration: none;
+}
+
+.journal-card h3 a:hover,
+.journal-card h3 a:focus {
+  text-decoration: underline;
+}
+
+.journal-meta {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+  margin: 4px 0 10px;
+}
+
+.journal-excerpt {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 12px;
+}
+
+.journal-link {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #111;
+}
+
+.journal-footer-link {
+  margin-top: 32px;
+}
+
+/* ==============
+   HOME: STATEMENT
+   ============== */
+
+.home-statement {
+  padding: 56px 0 72px;
+  border-top: 1px solid #eee;
+}
+
+.statement-text {
+  max-width: 42rem;
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 16px;
+}
+
+/* ==============
+   FOOTER
+   ============== */
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 24px 0 32px;
+}
+
+.footer-inner {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+.footer-links {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #444;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  text-decoration: underline;
+}
+
+.footer-meta {
+  margin: 2px 0;
+}
+
+.footer-meta a {
+  color: #777;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==============
+   BOOKS & PROJECTS
+   ============== */
+
+.page-books .page-intro {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.books-grid-section {
+  padding: 40px 0 64px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.book-card-media {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.book-card-media img {
+  border-radius: 4px;
+}
+
+.book-card-content h2 {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.book-card-content h2 a {
+  color: #111;
+  text-decoration: none;
+}
+
+.book-card-content h2 a:hover,
+.book-card-content h2 a:focus {
+  text-decoration: underline;
+}
+
+.book-card-text {
+  font-size: 14px;
+  color: #333;
+  margin: 8px 0 14px;
+}
+
+.book-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Book detail */
+
+.page-book-detail .book-detail-header {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.book-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.book-detail-media img {
+  border-radius: 4px;
+}
+
+.book-detail-subtitle {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 12px;
+}
+
+.book-detail-text {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 18px;
+}
+
+.book-detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.book-detail-body {
+  padding: 40px 0 64px;
+}
+
+.book-detail-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.book-detail-column h2 {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.book-detail-column p {
+  font-size: 15px;
+  color: #333;
+}
+
+/* ==============
+   JOURNAL PAGES
+   ============== */
+
+.page-journal .page-intro {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.journal-list-section {
+  padding: 40px 0 64px;
+}
+
+.journal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.journal-list-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e3ded8;
+}
+
+.journal-list-item h2 {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.journal-list-item h2 a {
+  color: #111;
+  text-decoration: none;
+}
+
+.journal-list-item h2 a:hover,
+.journal-list-item h2 a:focus {
+  text-decoration: underline;
+}
+
+.journal-list-meta {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+  margin: 4px 0 8px;
+}
+
+.journal-list-excerpt {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Single journal article */
+
+.page-journal-post .journal-article {
+  padding: 64px 0 64px;
+}
+
+.journal-article-inner {
+  margin: 0 auto;
+}
+
+.journal-article-header .hero-heading {
+  margin-bottom: 8px;
+}
+
+.journal-article-meta {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+.journal-article-body p {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 18px;
+}
+
+.journal-article-footer {
+  margin-top: 24px;
+}
+
+/* Journal link styling */
+.page-journal a,
+.page-journal a:visited,
+.page-journal-post a,
+.page-journal-post a:visited {
+  color: #111;
+  text-decoration: none;
+}
+
+.page-journal a:hover,
+.page-journal a:focus,
+.page-journal-post a:hover,
+.page-journal-post a:focus {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==============
+   SOFT BACKGROUND RHYTHM
+   ============== */
+
+.home-hero,
+.page-journal .page-intro,
+.page-books .page-intro,
+.page-book-detail .book-detail-header {
+  background: #f6f2ec;
+}
+
+.featured,
+.books-grid-section,
+.journal-list-section,
+.page-journal-post .journal-article {
+  background: #ffffff;
+}
+
+.home-statement,
+.book-detail-body {
+  background: #f8f4ee;
+}
+
+/* ==============
+   SITE MARK / CREST
+   ============== */
+
+.page-mark {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.page-mark-inner {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-mark-top {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #77716a;
+}
+
+.site-mark-sub {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b0a79b;
+  margin-top: 4px;
+}
+
+/* ==============
+   PROJECT HERO IMAGE
+   ============== */
+
+.project-hero-image {
+  padding: 0 0 40px;
+  background: #f6f2ec;
+}
+
+.full-width-image {
+  border-radius: 4px;
+}
+
+/* ==============
+   JOURNAL FEATURE BLOCK
+   ============== */
+
+.journal-feature {
+  padding: 56px 0 32px;
+  background: #f6f2ec;
+  border-bottom: 1px solid #e1ddd6;
+}
+
+.journal-feature-inner {
+  text-align: left;
+}
+
+.journal-feature-excerpt {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 18px;
+}
+
+/* ==============
+   RESPONSIVE
+   ============== */
+
+/* Large → medium tweaks */
+
+@media (max-width: 800px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Show hamburger on small screens */
+  .nav-toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide the inline nav by default on small screens */
+  .site-nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #faf8f5;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 16px 12px;
+  }
+
+  .site-nav li {
+    width: 100%;
+  }
+
+  .site-nav a {
+    display: block;
+    width: 100%;
+    padding: 4px 0;
+  }
+
+  /* When checkbox is checked, show nav */
+  .nav-toggle:checked ~ .site-nav {
+    display: block;
+  }
+
+  .home-hero {
+    padding-top: 64px;
+  }
+
+  .featured-inner,
+  .featured-inner--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .book-detail-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 640px) {
+  .hero-inner {
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+}
+
+
+.page-press .page-intro {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid #eee;
+  background: #f6f2ec;
+}
+
+.page-press .press-body {
+  padding: 40px 0 64px;
+  background: #ffffff;
+}
+
+/* =========================
+   UPDATE / ANNOUNCEMENT PAGE
+   ========================= */
+
+.page-update .site-header {
+  background-color: #faf8f5;
+}
+
+.update-shell {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 16px;
+  background: #f6f2ec;
+}
+
+.update-card {
+  width: min(860px, 100%);
+  text-align: center;
+  padding: 56px 20px 44px;
+}
+
+.update-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 12px;
+  color: #8c847a;
+  margin: 0 0 14px;
+}
+.update-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+  margin: 0 0 18px;
+  color: #1d1b16;
+}
+
+.update-subtitle {
+  font-size: 15px;
+  color: #5a5248;
+  margin: 0 auto 24px;
+  max-width: 42rem;
+}
+
+.update-body {
+  max-width: 44rem;
+  margin: 0 auto 18px;
+  text-align: center;
+  color: #2b2722;
+  font-size: 16px;
+}
+
+.update-body p {
+  margin: 0 0 14px;
+}
+
+.update-meta {
+  margin: 18px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8c847a;
+}
+
+.update-actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+.essay-response-note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.4;
+}
+
+.essay-response-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.essay-response-note a:hover {
+  color: #444;
+}

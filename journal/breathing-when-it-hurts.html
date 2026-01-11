@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing When It Hurts — Journal — Mark Robinson Is</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+  <div class="page-width header-inner">
+    <div class="site-title">
+      <a href="../index.html">MARK ROBINSON IS</a>
+    </div>
+
+    <!-- Mobile nav toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+      <span></span>
+    </label>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../books/index.html">Books &amp; Projects</a></li>
+        <li><a href="../journal/index.html" class="is-active">Journal</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+        <li><a href="../shop/index.html" class="nav-shop-link">Shop</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <!-- MAIN -->
+  <main class="page-journal-post">
+
+    <article class="journal-article">
+      <div class="page-width journal-article-inner">
+
+        <!-- ARTICLE HEADER -->
+        <header class="journal-article-header">
+          <p class="eyebrow">Journal</p>
+
+          <h1 class="hero-heading">
+            Breathing When It Hurts
+          </h1>
+
+          <p class="journal-article-meta">
+            Illness · Survival · Breath · Hope
+          </p>
+        </header>
+
+        <!-- ARTICLE BODY -->
+        <section class="journal-article-body">
+          <p>
+            Somewhere between the monitor’s slow pulse and the rustle of plastic curtains,
+            breath turns into a decision. The machine counts each inhale. The body weighs
+            every exhale. The room holds quiet conversations that never reach the nursing
+            station.
+          </p>
+
+          <p>
+            In that space, prayer changes shape. It becomes smaller and more stubborn.
+            Less about outcomes, more about presence. Less about endurance in theory,
+            more about the courage to remain with what the body is carrying.
+          </p>
+
+          <p>
+            The God who once felt distant and clean now lives at the end of a cannula,
+            in the patience of a nurse who adjusts a pillow, in the kindness of a friend
+            who sits through visiting hours without reaching for easy words.
+          </p>
+
+          <p>
+            Breathing when it hurts is a costly agreement to remain.
+            Each inhale declares, quietly and fiercely:
+            “I am still here.”
+            And in that stubborn act of staying,
+            God shares the labour of each breath.
+          </p>
+        </section>
+
+        <!-- ARTICLE FOOTER -->
+        <footer class="journal-article-footer">
+          <a href="index.html" class="journal-link">&larr; Back to journal</a>
+        </footer>
+		
+		<div class="essay-feedback">
+  <p>Was this essay helpful?</p>
+
+  <button id="yesBtn" type="button">Yes</button>
+  <button id="noBtn" type="button">Not yet</button>
+
+  <p id="thanksMsg" class="thanks-msg" hidden>
+    Thank you — appreciated.
+  </p>
+
+  <p class="essay-response-note">
+    If you wish to respond more fully, you are welcome to
+    <a href="/contact/">use the contact page</a>.
+  </p>
+</div>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="page-width footer-inner">
+      <div class="footer-links">
+  <a href="https://instagram.com/markrobinsonis" target="_blank" rel="noopener">Instagram</a>
+  <span>·</span>
+  <a href="mailto:hello@markrobinsonis.com">Email</a>
+  <span>·</span>
+  <a href="../press/index.html">Media / Press Kit</a>
+</div>
+      <p class="footer-meta">
+        © Mark Robinson 2025 · Writing, art &amp; theology
+      </p>
+      <p class="footer-meta">
+        <a href="../legal/privacy.html">Privacy statement</a>
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+  const thanksMsg = document.getElementById("thanksMsg");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+
+  function showThanks() {
+    thanksMsg.hidden = false;
+  }
+
+  yesBtn.addEventListener("click", showThanks);
+  noBtn.addEventListener("click", showThanks);
+</script>
+
+</body>
+</html>
